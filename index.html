@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bahasa Indonesia Kelas 6 SD - Hasil Wawancara</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Fredoka & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F9FF;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .font-kids {
+            font-family: 'Fredoka', cursive;
+        }
+
+        /* Custom scrollbar for friendly look */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #E0F2FE;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38BDF8;
+            border-radius: 10px;
+        }
+
+        /* Custom animations */
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .animate-bounce-subtle {
+            animation: bounce-subtle 2s infinite;
+        }
+
+        /* Canvas line overlay */
+        .matching-container {
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .dot-node {
+            transition: transform 0.15s ease, background-color 0.2s ease;
+        }
+        .dot-node:hover, .dot-node.active {
+            transform: scale(1.25);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen flex flex-col justify-between selection:bg-amber-200">
+
+    <!-- Application Top Navigation Bar -->
+    <header class="bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-500 text-white shadow-lg sticky top-0 z-40">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white text-sky-500 rounded-2xl p-2.5 shadow-md flex items-center justify-center">
+                    <i class="fa-solid fa-book-open-reader text-2xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-kids text-xl md:text-2xl font-bold tracking-wide">Bahasa Indonesia</h1>
+                    <p class="text-xs text-sky-100 font-medium">Kelas 6 SD • Teks Hasil Wawancara</p>
+                </div>
+            </div>
+            <div id="userInfoHeader" class="hidden flex items-center bg-white/20 backdrop-blur-md rounded-full px-3 py-1 text-xs md:text-sm font-semibold border border-white/30">
+                <i class="fa-solid fa-user-graduate mr-1.5 text-amber-300"></i>
+                <span id="headerStudentName" class="truncate max-w-[100px] md:max-w-[160px]">Siswa</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl w-full mx-auto p-4 sm:p-6 flex-grow">
+
+        <!-- SCREEN 1: SPLASH & PORTAL MASUK -->
+        <section id="splashScreen" class="space-y-6 animate-fade-in">
+            <!-- Hero Card -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-4 border-sky-100 text-center relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-100 rounded-full blur-2xl opacity-60"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-sky-100 rounded-full blur-2xl opacity-60"></div>
+
+                <span class="inline-block px-4 py-1.5 bg-amber-100 text-amber-800 rounded-full text-xs font-bold tracking-wider uppercase mb-3 border border-amber-300">
+                    ✨ Modul Interaktif Siswa
+                </span>
+                <h2 class="font-kids text-2xl md:text-4xl text-sky-600 font-extrabold mb-2">
+                    Belajar Memahami Hasil Wawancara 🏸
+                </h2>
+                <p class="text-slate-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+                    Yuk, pelajari cara menemukan informasi penting, menyusun ringkasan, dan membuat infografik hasil wawancara!
+                </p>
+
+                <!-- Student Identity Input Form -->
+                <div class="mt-6 max-w-md mx-auto bg-sky-50/80 p-5 rounded-2xl border-2 border-sky-200">
+                    <label for="studentNameInput" class="block text-left text-sm font-bold text-sky-900 mb-2">
+                        <i class="fa-solid fa-signature text-sky-500 mr-1"></i> Masukkan Nama Lengkapmu:
+                    </label>
+                    <input type="text" id="studentNameInput" placeholder="Contoh: Budi Santoso"
+                        class="w-full px-4 py-3 rounded-xl border-2 border-sky-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-slate-800 font-semibold shadow-inner transition outline-none text-base">
+                    <p id="nameError" class="text-red-500 text-xs text-left mt-1.5 font-bold hidden">
+                        ⚠️ Harap isi nama lengkapmu terlebih dahulu sebelum memulai!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Petunjuk Pengerjaan Card -->
+            <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-3xl p-6 shadow-md border-2 border-amber-200">
+                <h3 class="font-kids text-xl font-bold text-amber-900 mb-4 flex items-center">
+                    <i class="fa-solid fa-list-check text-amber-500 mr-2.5 text-2xl"></i> Petunjuk Pengerjaan Tugas
+                </h3>
+                <ol class="space-y-3.5 text-slate-700 text-sm md:text-base font-medium">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-7 h-7 bg-amber-400 text-white rounded-full flex items-center justify-center font-bold text-xs mr-3 shadow">1</span>
+                        <span>
+                            Tonton video wawancara melalui tautan berikut: 
+                            <a href="https://www.youtube.com/watch?v=zS-mfgrFkIg" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 font-bold underline inline-flex items-center ml-1">
+                                Video Wawancara Kak Nitya <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i>
+                            </a>
+                        </span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-7 h-7 bg-amber-400 text-white rounded-full flex items-center justify-center font-bold text-xs mr-3 shadow">2</span>
+                        <span>Simak pertanyaan dan jawaban narasumber dengan saksama.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-7 h-7 bg-amber-400 text-white rounded-full flex items-center justify-center font-bold text-xs mr-3 shadow">3</span>
+                        <span>Jawablah semua soal berdasarkan video dan materi pembelajaran.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-7 h-7 bg-amber-400 text-white rounded-full flex items-center justify-center font-bold text-xs mr-3 shadow">4</span>
+                        <span>Setiap soal bagian I & II bernilai 5 poin. Tugas Uraian bernilai maksimal 60 poin. <strong>Nilai maksimal keseluruhan: 100</strong>.</span>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Start Button -->
+            <div class="text-center pt-2">
+                <button id="btnStart" onclick="startApp()" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-kids text-lg md:text-xl font-bold rounded-2xl shadow-lg hover:shadow-xl transform transition hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center mx-auto space-x-2">
+                    <span>Mulai Belajar & Mengerjakan Tugas</span>
+                    <i class="fa-solid fa-circle-arrow-right text-2xl"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- SCREEN 2: PORTAL MATERI DAN TUGAS -->
+        <section id="appContent" class="hidden space-y-6">
+
+            <!-- Tab Switcher (Materi vs Tugas) -->
+            <div class="flex bg-slate-200 p-1.5 rounded-2xl shadow-inner font-kids">
+                <button id="tabBtnMateri" onclick="switchMainTab('materi')" class="flex-1 py-3 px-4 rounded-xl font-bold text-sm md:text-base transition flex items-center justify-center space-x-2 bg-white text-sky-600 shadow-md">
+                    <i class="fa-solid fa-book text-lg"></i>
+                    <span>Materi Pembelajaran</span>
+                </button>
+                <button id="tabBtnTugas" onclick="switchMainTab('tugas')" class="flex-1 py-3 px-4 rounded-xl font-bold text-sm md:text-base transition flex items-center justify-center space-x-2 text-slate-600 hover:text-slate-900">
+                    <i class="fa-solid fa-pen-to-square text-lg"></i>
+                    <span>Tugas Formatif</span>
+                </button>
+            </div>
+
+            <!-- CONTAINER MATERI -->
+            <div id="materiContainer" class="space-y-4">
+                <!-- Inner Nav Sub-Tabs for Materials -->
+                <div class="flex overflow-x-auto space-x-2 pb-2 scrollbar-none" id="materiNavTabs">
+                    <button onclick="showMateri(1)" id="matTab1" class="flex-shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs md:text-sm bg-sky-500 text-white shadow-sm">
+                        1. Hasil Wawancara
+                    </button>
+                    <button onclick="showMateri(2)" id="matTab2" class="flex-shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs md:text-sm bg-white text-slate-600 hover:bg-sky-50">
+                        2. Informasi Penting
+                    </button>
+                    <button onclick="showMateri(3)" id="matTab3" class="flex-shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs md:text-sm bg-white text-slate-600 hover:bg-sky-50">
+                        3. Menulis Ringkasan
+                    </button>
+                    <button onclick="showMateri(4)" id="matTab4" class="flex-shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs md:text-sm bg-white text-slate-600 hover:bg-sky-50">
+                        4. Kalimat Runtut
+                    </button>
+                    <button onclick="showMateri(5)" id="matTab5" class="flex-shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs md:text-sm bg-white text-slate-600 hover:bg-sky-50">
+                        5. Form Infografik
+                    </button>
+                </div>
+
+                <!-- MATERI CONTENT CARDS -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-2 border-sky-100 min-h-[380px]">
+
+                    <!-- MATERI 1 -->
+                    <div id="materiContent1" class="materi-panel space-y-4">
+                        <div class="flex items-center space-x-3 text-sky-600 mb-2">
+                            <i class="fa-solid fa-comments text-3xl"></i>
+                            <h3 class="font-kids text-xl md:text-2xl font-bold">Apa yang Dimaksud dengan Hasil Wawancara?</h3>
+                        </div>
+                        <ul class="space-y-3 text-slate-700 text-sm md:text-base leading-relaxed">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-sky-500 mt-1 mr-3 flex-shrink-0"></i>
+                                <span><strong>Wawancara</strong> merupakan kegiatan tanya jawab untuk memperoleh informasi dari seseorang.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-sky-500 mt-1 mr-3 flex-shrink-0"></i>
+                                <span><strong>Hasil wawancara</strong> adalah informasi yang diperoleh dari jawaban narasumber selama kegiatan wawancara.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-circle-check text-sky-500 mt-1 mr-3 flex-shrink-0"></i>
+                                <span>Hasil wawancara dapat ditulis kembali agar orang lain dapat mengetahui informasi yang disampaikan narasumber tanpa harus menyaksikan seluruh wawancara.</span>
+                            </li>
+                        </ul>
+                        <div class="bg-sky-50 p-4 rounded-2xl border-l-4 border-sky-400 mt-4">
+                            <h4 class="font-bold text-sky-900 text-sm mb-2 flex items-center">
+                                <i class="fa-solid fa-lightbulb text-amber-400 mr-2"></i> Contoh pada Wawancara Kak Nitya:
+                            </h4>
+                            <p class="text-xs md:text-sm text-slate-600 mb-2">Dalam wawancara Kak Nitya, kita memperoleh informasi tentang:</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs md:text-sm text-slate-700 font-medium">
+                                <div class="bg-white p-2.5 rounded-xl border border-sky-200">✨ Awal mula Kak Nitya mengenal bulu tangkis</div>
+                                <div class="bg-white p-2.5 rounded-xl border border-sky-200">✨ Pengalaman menyenangkan & kesulitan atlet</div>
+                                <div class="bg-white p-2.5 rounded-xl border border-sky-200">✨ Sikap yang perlu dimiliki seorang atlet</div>
+                                <div class="bg-white p-2.5 rounded-xl border border-sky-200">✨ Hal penting bagi seorang pelatih</div>
+                                <div class="bg-white p-2.5 rounded-xl border border-sky-200 sm:col-span-2">✨ Pesan untuk generasi muda bulu tangkis</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MATERI 2 -->
+                    <div id="materiContent2" class="materi-panel hidden space-y-4">
+                        <div class="flex items-center space-x-3 text-emerald-600 mb-2">
+                            <i class="fa-solid fa-filter text-3xl"></i>
+                            <h3 class="font-kids text-xl md:text-2xl font-bold">Cara Menentukan Informasi Penting</h3>
+                        </div>
+                        <p class="text-slate-700 text-sm md:text-base leading-relaxed">
+                            Tidak semua perkataan dalam wawancara harus ditulis kembali. Kita perlu memilih informasi yang paling penting dan sesuai dengan topik pembicaraan.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200">
+                                <strong class="text-emerald-800 text-sm block mb-1">Langkah 1: Tentukan Topik Wawancara</strong>
+                                <span class="text-xs md:text-sm text-slate-600">Topik adalah hal utama yang dibicarakan. <i>Contoh: Pengalaman Kak Nitya menekuni bulu tangkis.</i></span>
+                            </div>
+                            <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200">
+                                <strong class="text-emerald-800 text-sm block mb-1">Langkah 2: Catat Informasi Penting</strong>
+                                <span class="text-xs md:text-sm text-slate-600 block mb-1">Pilih jawaban yang menjelaskan topik:</span>
+                                <ul class="list-disc list-inside text-xs md:text-sm text-slate-700 space-y-1 pl-2">
+                                    <li>Kak Nitya mengenal bulu tangkis melalui kakak sepupunya.</li>
+                                    <li>Ia akhirnya menyukai dan terus berlatih bulu tangkis.</li>
+                                    <li>Menjadi atlet membutuhkan latihan teratur dan pengorbanan waktu.</li>
+                                    <li>Atlet perlu disiplin, tanggung jawab, dan kemauan tinggi.</li>
+                                </ul>
+                            </div>
+                            <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200">
+                                <strong class="text-emerald-800 text-sm block mb-1">Langkah 3: Kelompokkan Informasi</strong>
+                                <span class="text-xs md:text-sm text-slate-600">Informasi yang memiliki kesamaan dikelompokkan (misal: Awal mula, Pengalaman, dan Sikap).</span>
+                            </div>
+                            <div class="p-3.5 bg-emerald-50 rounded-2xl border border-emerald-200">
+                                <strong class="text-emerald-800 text-sm block mb-1">Langkah 4: Susun Menjadi Tulisan</strong>
+                                <span class="text-xs md:text-sm text-slate-600">Gunakan kalimat yang jelas dan urut. Boleh memakai kata-kata sendiri tanpa mengubah isi informasi.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MATERI 3 -->
+                    <div id="materiContent3" class="materi-panel hidden space-y-4">
+                        <div class="flex items-center space-x-3 text-purple-600 mb-2">
+                            <i class="fa-solid fa-file-pen text-3xl"></i>
+                            <h3 class="font-kids text-xl md:text-2xl font-bold">Cara Menulis Ringkasan Hasil Wawancara</h3>
+                        </div>
+                        <p class="text-slate-700 text-sm md:text-base">
+                            <strong>Ringkasan</strong> adalah tulisan singkat yang memuat pokok-pokok informasi dari suatu pembahasan tanpa mengubah makna utamanya.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 my-3">
+                            <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200">
+                                <div class="font-bold text-purple-800 text-base mb-1.5 flex items-center">
+                                    <span class="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-xs mr-2">a</span> Pembuka
+                                </div>
+                                <div class="text-xs md:text-sm text-slate-600 leading-relaxed">Tuliskan siapa narasumber dan apa topik utama yang dibicarakan dalam wawancara.</div>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200">
+                                <div class="font-bold text-purple-800 text-base mb-1.5 flex items-center">
+                                    <span class="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-xs mr-2">b</span> Isi
+                                </div>
+                                <div class="text-xs md:text-sm text-slate-600 leading-relaxed">Jelaskan poin-poin atau fakta penting dari jawaban narasumber secara runtut.</div>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200">
+                                <div class="font-bold text-purple-800 text-base mb-1.5 flex items-center">
+                                    <span class="w-6 h-6 bg-purple-500 text-white rounded-full flex items-center justify-center text-xs mr-2">c</span> Penutup
+                                </div>
+                                <div class="text-xs md:text-sm text-slate-600 leading-relaxed">Tuliskan pesan, ajakan, atau kesimpulan penting yang disampaikan oleh narasumber.</div>
+                            </div>
+                        </div>
+                        <div class="bg-amber-50 p-4 rounded-2xl border-l-4 border-amber-400">
+                            <h4 class="font-bold text-amber-900 text-sm mb-1 flex items-center">
+                                <i class="fa-solid fa-circle-info text-amber-500 mr-2"></i> Petunjuk Penting Menulis Ringkasan:
+                            </h4>
+                            <p class="text-xs md:text-sm text-slate-700 leading-relaxed">
+                                Ingat, dalam menulis ringkasan hasil wawancara, kalian <strong>tidak perlu menyalin seluruh dialog tanya jawab</strong>. Pilihlah informasi yang paling penting dan susunlah kembali menggunakan bahasa kalian sendiri secara singkat, padat, dan jelas!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- MATERI 4 -->
+                    <div id="materiContent4" class="materi-panel hidden space-y-4">
+                        <div class="flex items-center space-x-3 text-indigo-600 mb-2">
+                            <i class="fa-solid fa-spell-check text-3xl"></i>
+                            <h3 class="font-kids text-xl md:text-2xl font-bold">Menggunakan Kalimat Jelas dan Runtut</h3>
+                        </div>
+                        <p class="text-slate-700 text-sm md:text-base">
+                            Tulisan hasil wawancara harus mudah dipahami pembaca. Hal yang perlu diperhatikan:
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs md:text-sm text-slate-700">
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200">✓ Gunakan kalimat jelas & tidak berbelit-belit.</div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200">✓ Susun berdasarkan urutan masuk akal.</div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200">✓ Hindari mengulang informasi yang sama.</div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200">✓ Gunakan huruf kapital & tanda baca tepat.</div>
+                            <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200 sm:col-span-2">⚠️ Jangan menambahkan fakta buatan yang tidak disampaikan narasumber.</div>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs md:text-sm space-y-2">
+                            <div><strong class="text-red-500">Kalimat Asli Wawancara:</strong> "Awalnya saya mengikuti kakak sepupu, kemudian saya semakin menyukai bulu tangkis dan memutuskan terus berlatih."</div>
+                            <div><strong class="text-emerald-600">Kalimat Ringkasan yang Bagus:</strong> "Kak Nitya mengenal bulu tangkis melalui kakak sepupunya, kemudian menyukai olahraga tersebut dan terus berlatih."</div>
+                        </div>
+                    </div>
+
+                    <!-- MATERI 5 -->
+                    <div id="materiContent5" class="materi-panel hidden space-y-4">
+                        <div class="flex items-center space-x-3 text-pink-600 mb-2">
+                            <i class="fa-solid fa-chart-pie text-3xl"></i>
+                            <h3 class="font-kids text-xl md:text-2xl font-bold">Informasi Bentuk Infografik</h3>
+                        </div>
+                        <p class="text-slate-700 text-sm md:text-base">
+                            <strong>Infografik</strong> adalah penyajikan informasi menggunakan gabungan tulisan dan unsur visual (gambar, simbol, diagram) agar mudah dipahami.
+                        </p>
+                        <div class="bg-pink-50 p-4 rounded-2xl border border-pink-200">
+                            <h4 class="font-bold text-pink-900 text-sm mb-2 text-center">
+                                🎨 Contoh Topik Infografik:<br>
+                                <span class="text-xs font-normal text-slate-600">LANGKAH-LANGKAH MENEMUKAN MINAT DAN MENGEMBANGKAN BAKAT</span>
+                            </h4>
+                            <div class="space-y-2 text-xs md:text-sm text-slate-700 max-w-md mx-auto">
+                                <div class="bg-white p-2 rounded-xl border border-pink-200 flex items-center"><span class="w-6 h-6 bg-pink-400 text-white rounded-full flex items-center justify-center font-bold mr-2 text-xs">1</span> Kenali kegiatan yang disukai.</div>
+                                <div class="bg-white p-2 rounded-xl border border-pink-200 flex items-center"><span class="w-6 h-6 bg-pink-400 text-white rounded-full flex items-center justify-center font-bold mr-2 text-xs">2</span> Cari tahu kemampuan yang ingin dikembangkan.</div>
+                                <div class="bg-white p-2 rounded-xl border border-pink-200 flex items-center"><span class="w-6 h-6 bg-pink-400 text-white rounded-full flex items-center justify-center font-bold mr-2 text-xs">3</span> Berlatih secara teratur.</div>
+                                <div class="bg-white p-2 rounded-xl border border-pink-200 flex items-center"><span class="w-6 h-6 bg-pink-400 text-white rounded-full flex items-center justify-center font-bold mr-2 text-xs">4</span> Belajar dari kesalahan dan menerima masukan.</div>
+                                <div class="bg-white p-2 rounded-xl border border-pink-200 flex items-center"><span class="w-6 h-6 bg-pink-400 text-white rounded-full flex items-center justify-center font-bold mr-2 text-xs">5</span> Tetapkan tujuan dan terus berusaha.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Footer Navigation inside Materials -->
+                <div class="flex justify-between items-center pt-2">
+                    <button id="btnPrevMat" onclick="navigateMateri(-1)" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl text-xs sm:text-sm">
+                        <i class="fa-solid fa-chevron-left mr-1"></i> Sebelumnya
+                    </button>
+                    <button id="btnNextMat" onclick="navigateMateri(1)" class="px-5 py-2 bg-sky-500 hover:bg-sky-600 text-white font-bold rounded-xl text-xs sm:text-sm shadow">
+                        Selanjutnya <i class="fa-solid fa-chevron-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONTAINER TUGAS FORMATIF -->
+            <div id="tugasContainer" class="hidden space-y-8">
+
+                <!-- BAGIAN 1: BENAR ATAU SALAH -->
+                <div class="bg-white rounded-3xl p-5 md:p-7 shadow-xl border-2 border-indigo-100">
+                    <div class="border-b-2 border-indigo-100 pb-3 mb-5">
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bagian I</span>
+                        <h3 class="font-kids text-lg md:text-xl font-bold text-indigo-900 mt-1">Soal Benar atau Salah (5 Soal @ 5 Poin)</h3>
+                        <p class="text-xs md:text-sm text-slate-500">Pilihlah jawaban 'Benar' jika sesuai dengan materi dan 'Salah' jika tidak sesuai.</p>
+                    </div>
+
+                    <div class="space-y-5" id="tfQuestionsContainer">
+                        <!-- Questions JS Rendered here -->
+                    </div>
+                </div>
+
+                <!-- BAGIAN 2: MENJODOHKAN (CANVAS INTERAKTIF) -->
+                <div class="bg-white rounded-3xl p-5 md:p-7 shadow-xl border-2 border-emerald-100">
+                    <div class="border-b-2 border-emerald-100 pb-3 mb-4">
+                        <div class="flex justify-between items-center flex-wrap gap-2">
+                            <div>
+                                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bagian II</span>
+                                <h3 class="font-kids text-lg md:text-xl font-bold text-emerald-900 mt-1">Menjodohkan Istilah (5 Soal @ 5 Poin)</h3>
+                            </div>
+                            <button onclick="resetMatchingCanvas()" class="px-3 py-1.5 bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold rounded-xl text-xs flex items-center space-x-1 border border-amber-300">
+                                <i class="fa-solid fa-rotate-left"></i>
+                                <span>Reset Garis</span>
+                            </button>
+                        </div>
+                        <p class="text-xs md:text-sm text-slate-500 mt-1">
+                            👆 <strong>Petunjuk:</strong> Sentuh/klik bulatan pada soal sebelah kiri, lalu tarik atau sentuh bulatan jawaban pasangannya di sebelah kanan!
+                        </p>
+                    </div>
+
+                    <!-- Matching Interactive View -->
+                    <div class="matching-container my-4 bg-slate-50 rounded-2xl p-3 sm:p-5 border border-slate-200 overflow-hidden relative" id="matchingBox">
+                        <!-- SVG / Canvas Layer for Lines -->
+                        <svg id="svgCanvas" class="absolute inset-0 w-full h-full pointer-events-none z-10"></svg>
+
+                        <div class="grid grid-cols-2 gap-4 md:gap-12 relative z-20">
+                            <!-- Left Items (Soal) -->
+                            <div class="space-y-4" id="leftMatchingNodes">
+                                <!-- JS Injected -->
+                            </div>
+
+                            <!-- Right Items (Pilihan Jawaban) -->
+                            <div class="space-y-4" id="rightMatchingNodes">
+                                <!-- JS Injected -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BAGIAN 3: MENULIS RINGKASAN WAWANCARA (URAIAN) -->
+                <div class="bg-white rounded-3xl p-5 md:p-7 shadow-xl border-2 border-amber-100">
+                    <div class="border-b-2 border-amber-100 pb-3 mb-4">
+                        <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bagian III</span>
+                        <h3 class="font-kids text-lg md:text-xl font-bold text-amber-900 mt-1">Menulis Ringkasan Wawancara (Uraian - Maks 60 Poin)</h3>
+                        <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
+                            Tonton kembali wawancara Kak Nitya melalui 
+                            <a href="https://www.youtube.com/watch?v=zS-mfgrFkIg&t=4s" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-bold underline inline-flex items-center">
+                                tautan video ini <i class="fa-solid fa-arrow-up-right-from-square text-xs ml-1"></i>
+                            </a>, 
+                            lalu tulislah ringkasan hasil wawancara tersebut dalam <strong>3–5 kalimat</strong> menggunakan bahasamu sendiri!
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <label for="essayInput" class="block text-xs font-bold text-slate-700 uppercase tracking-wide">
+                            <i class="fa-solid fa-pen text-amber-500 mr-1"></i> Kolom Jawaban Ringkasan Siswa:
+                        </label>
+                        <textarea id="essayInput" rows="6" placeholder="Tuliskan ringkasan wawancara Kak Nitya di sini dengan rapi..."
+                            class="w-full p-4 rounded-2xl border-2 border-amber-200 focus:border-amber-400 focus:ring-2 focus:ring-amber-100 text-slate-800 font-medium text-sm md:text-base leading-relaxed outline-none shadow-inner resize-y"
+                            oninput="updateEssayCounter()"></textarea>
+
+                        <div class="flex justify-between items-center text-xs font-semibold text-slate-500 px-1">
+                            <span id="sentenceCounter">Jumlah Kalimat: 0 kalimat</span>
+                            <span id="charCounter">0 Karakter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="text-center pt-4">
+                    <button onclick="calculateAndShowResult()" class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:to-pink-700 text-white font-kids text-lg md:text-xl font-bold rounded-2xl shadow-xl transform transition hover:-translate-y-1 active:translate-y-0">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Kirim Jawaban & Lihat Hasil
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SCREEN 3: HASIL PENILAIAN & PEMBAHASAN -->
+        <section id="resultScreen" class="hidden space-y-6">
+            
+            <!-- WhatsApp Banner Alert -->
+            <div class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-3xl p-5 shadow-lg border-2 border-emerald-300 flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                <div class="bg-white/20 p-4 rounded-2xl flex-shrink-0 text-3xl">
+                    📸
+                </div>
+                <div>
+                    <h4 class="font-kids text-lg md:text-xl font-bold">PEMBERITAHUAN PENTING!</h4>
+                    <p class="text-xs md:text-sm text-emerald-50 font-medium leading-relaxed">
+                        <strong>SILAKAN SCREENSHOT HALAMAN HASIL NILAI INI HASILNYA DAN KIRIMKAN HASILNYA KE WHATSAPP PRIBADI GURU!</strong>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Score Summary Card -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-xl border-4 border-indigo-100 text-center relative overflow-hidden">
+                <div class="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+                    Laporan Hasil Pengerjaan
+                </div>
+                <h2 class="font-kids text-2xl md:text-3xl font-bold text-slate-800">
+                    Nilai Kamu, <span id="resStudentName" class="text-indigo-600">Siswa</span>! 🎉
+                </h2>
+
+                <!-- Big Final Score Badge -->
+                <div class="my-6 inline-flex flex-col items-center justify-center w-36 h-36 md:w-44 md:h-44 bg-gradient-to-tr from-amber-400 via-orange-400 to-amber-300 rounded-full shadow-lg border-4 border-white text-white transform hover:scale-105 transition">
+                    <span class="text-xs uppercase tracking-widest font-bold opacity-90">Total Nilai</span>
+                    <span id="finalScore" class="font-kids text-4xl md:text-6xl font-extrabold leading-none">0</span>
+                    <span class="text-xs font-bold opacity-90 mt-1">dari 100</span>
+                </div>
+
+                <!-- Breakdown Table -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto text-left text-xs md:text-sm">
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 flex justify-between items-center">
+                        <span class="text-slate-600 font-medium"><i class="fa-solid fa-list-check text-indigo-500 mr-2"></i> Pilihan Ganda & Menjodohkan:</span>
+                        <strong id="pgScoreText" class="text-slate-800 text-base">0 / 40</strong>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 flex justify-between items-center">
+                        <span class="text-slate-600 font-medium"><i class="fa-solid fa-pen-nib text-amber-500 mr-2"></i> Menulis Ringkasan (Uraian):</span>
+                        <strong id="essayScoreText" class="text-slate-800 text-base">0 / 60</strong>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-3">
+                    <button onclick="openDiscussionModal()" class="w-full sm:w-auto px-6 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-kids text-sm md:text-base font-bold rounded-2xl shadow-md transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>Lihat Pembahasan Umum Materi</span>
+                    </button>
+                    <button onclick="resetEntireApp()" class="w-full sm:w-auto px-6 py-3.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-kids text-sm md:text-base font-bold rounded-2xl transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-rotate-right"></i>
+                        <span>Coba Kerjakan Lagi</span>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- MODAL PEMBAHASAN UMUM MATERI -->
+    <div id="discussionModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl border-4 border-indigo-200 overflow-hidden animate-scale-up">
+            <!-- Modal Header -->
+            <div class="bg-indigo-600 text-white p-4 px-6 flex justify-between items-center">
+                <h3 class="font-kids text-lg md:text-xl font-bold flex items-center">
+                    <i class="fa-solid fa-graduation-cap mr-2.5 text-amber-300 text-2xl"></i> Pembahasan Umum Materi & Tips
+                </h3>
+                <button onclick="closeDiscussionModal()" class="text-white hover:text-amber-200 text-xl font-bold p-1">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body Content -->
+            <div class="p-5 md:p-6 overflow-y-auto space-y-4 text-xs md:text-sm text-slate-700 leading-relaxed">
+                <div class="p-3 bg-amber-50 rounded-2xl border border-amber-200 text-amber-900 text-xs">
+                    💡 <strong>Catatan Guru:</strong> Halaman ini berisi rangkuman tips dan prinsip umum dalam menjawab soal hasil wawancara, bukan kunci jawaban nomor demi nomor.
+                </div>
+
+                <div class="space-y-3">
+                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-indigo-900 mb-1">1. Prinsip Menentukan Pernyataan Benar/Salah</h4>
+                        <p class="text-slate-600">Saat membaca pernyataan tentang wawancara, perhatikan apakah tulisan tersebut menjaga keaslian makna informasi atau justru mengubah fakta dari narasumber. Ringkasan yang baik tidak boleh mengubah fakta.</p>
+                    </div>
+
+                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-indigo-900 mb-1">2. Istilah-Istilah Penting Wawancara</h4>
+                        <ul class="list-disc list-inside space-y-1 text-slate-600 pl-1">
+                            <li><strong>Wawancara:</strong> Kegiatan tanya jawab untuk menggali informasi.</li>
+                            <li><strong>Narasumber:</strong> Orang yang memberikan jawaban/informasi.</li>
+                            <li><strong>Pewawancara:</strong> Orang yang bertanya dalam wawancara.</li>
+                            <li><strong>Ringkasan:</strong> Pokok-pokok informasi singkat dari wawancara.</li>
+                            <li><strong>Infografik:</strong> Penyajian fakta menggunakan kombinasi teks dan gambar.</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-indigo-900 mb-1">3. Tips Menulis Ringkasan Wawancara yang Bagus</h4>
+                        <p class="text-slate-600 mb-2">Untuk mendapatkan nilai maksimal dalam menulis ringkasan:</p>
+                        <ul class="list-disc list-inside space-y-1 text-slate-600 pl-1">
+                            <li>Tuliskan dalam 3 sampai 5 kalimat yang runtut.</li>
+                            <li>Sebutkan nama narasumber dan topik utamanya di bagian awal.</li>
+                            <li>Sertakan kata-kata kunci penting seperti <i>bulu tangkis, atlet, disiplin,</i> dan <i>pesan</i>.</li>
+                            <li>Gunakan huruf kapital di awal kalimat dan akhiri setiap kalimat dengan tanda titik (.).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-100 p-4 text-right border-t border-slate-200">
+                <button onclick="closeDiscussionModal()" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs md:text-sm">
+                    Tutup Pembahasan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================================
+           DATA & STATE MANAGEMENT
+           ========================================================= */
+        let studentName = "";
+        let currentMateriIndex = 1;
+
+        // Bagian 1: Soal Benar / Salah Data
+        const tfQuestions = [
+            {
+                id: 1,
+                question: "1. Ringkasan wawancara berisi informasi penting yang disampaikan oleh narasumber.",
+                answer: "Benar"
+            },
+            {
+                id: 2,
+                question: "2. Saat menulis ringkasan, kita boleh mengubah makna jawaban narasumber agar cerita lebih menarik.",
+                answer: "Salah"
+            },
+            {
+                id: 3,
+                question: "3. Kak Nitya mulai mengenal bulu tangkis sejak kecil karena mengikuti kegiatan kakak sepupunya.",
+                answer: "Benar"
+            },
+            {
+                id: 4,
+                question: "4. Menurut Kak Nitya, seorang atlet perlu memiliki sikap disiplin, tanggung jawab, dan kemauan yang tinggi.",
+                answer: "Benar"
+            },
+            {
+                id: 5,
+                question: "5. Infografik dapat digunakan untuk menyampaikan langkah-langkah menemukan minat dan mengembangkan bakat.",
+                answer: "Benar"
+            }
+        ];
+
+        // Bagian 2: Data Menjodohkan
+        const leftItems = [
+            { id: 6, label: "6. Wawancara" },
+            { id: 7, label: "7. Narasumber" },
+            { id: 8, label: "8. Ringkasan" },
+            { id: 9, label: "9. Infografik" },
+            { id: 10, label: "10. Pewawancara" }
+        ];
+
+        // Randomized right options based on prompt key: 6->D, 7->B, 8->A, 9->C, 10->E
+        const rightItems = [
+            { id: 'A', label: "A. Tulisan singkat yang memuat informasi penting", keyFor: 8 },
+            { id: 'B', label: "B. Orang yang memberikan informasi dalam wawancara", keyFor: 7 },
+            { id: 'C', label: "C. Penyajian informasi dengan bantuan unsur visual", keyFor: 9 },
+            { id: 'D', label: "D. Kegiatan tanya jawab untuk memperoleh informasi", keyFor: 6 },
+            { id: 'E', label: "E. Orang yang mengajukan pertanyaan dalam wawancara", keyFor: 10 }
+        ];
+
+        // Matching State: { leftId: rightId } e.g., { 6: 'D', ... }
+        let userConnections = {};
+        let activeLeftNode = null;
+
+        /* =========================================================
+           INITIALIZATION & APP NAVIGATION
+           ========================================================= */
+        window.onload = function() {
+            renderTFQuestions();
+            renderMatchingNodes();
+            setupCanvasResizeListener();
+        };
+
+        function startApp() {
+            const input = document.getElementById('studentNameInput');
+            const nameVal = input.value.trim();
+            const errorEl = document.getElementById('nameError');
+
+            if (!nameVal) {
+                errorEl.classList.remove('hidden');
+                input.focus();
+                return;
+            }
+
+            errorEl.classList.add('hidden');
+            studentName = nameVal;
+
+            document.getElementById('headerStudentName').innerText = studentName;
+            document.getElementById('userInfoHeader').classList.remove('hidden');
+
+            document.getElementById('splashScreen').classList.add('hidden');
+            document.getElementById('appContent').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchMainTab(tab) {
+            const materiBtn = document.getElementById('tabBtnMateri');
+            const tugasBtn = document.getElementById('tabBtnTugas');
+            const materiCont = document.getElementById('materiContainer');
+            const tugasCont = document.getElementById('tugasContainer');
+
+            if (tab === 'materi') {
+                materiBtn.className = "flex-1 py-3 px-4 rounded-xl font-bold text-sm md:text-base transition flex items-center justify-center space-x-2 bg-white text-sky-600 shadow-md";
+                tugasBtn.className = "flex-1 py-3 px-4 rounded-xl font-bold text-sm md:text-base transition flex items-center justify-center space-x-2 text-slate-600 hover:text-slate-900";
+                materiCont.classList.remove('hidden');
+                tugasCont.classList.add('hidden');
+            } else {
+                tugasBtn.className = "flex-1 py-3 px-4 rounded-xl font-bold text-sm md:text-base transition flex items-center justify-center space-x-2 bg-white text-emerald-600 shadow-md";
+                materiBtn.className = "flex-1 py-3 px-4 rounded-xl font-bold text-sm md:text-base transition flex items-center justify-center space-x-2 text-slate-600 hover:text-slate-900";
+                tugasCont.classList.remove('hidden');
+                materiCont.classList.add('hidden');
+                
+                // Redraw canvas lines after tab switch
+                setTimeout(() => {
+                    drawConnections();
+                }, 100);
+            }
+        }
+
+        /* =========================================================
+           MATERI TAB SYSTEM
+           ========================================================= */
+        function showMateri(index) {
+            currentMateriIndex = index;
+
+            // Hide all contents
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById(`materiContent${i}`).classList.add('hidden');
+                const tabBtn = document.getElementById(`matTab${i}`);
+                if (tabBtn) {
+                    tabBtn.className = "flex-shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs md:text-sm bg-white text-slate-600 hover:bg-sky-50";
+                }
+            }
+
+            // Show selected
+            document.getElementById(`materiContent${index}`).classList.remove('hidden');
+            const activeTab = document.getElementById(`matTab${index}`);
+            if (activeTab) {
+                activeTab.className = "flex-shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs md:text-sm bg-sky-500 text-white shadow-sm";
+            }
+        }
+
+        function navigateMateri(direction) {
+            let target = currentMateriIndex + direction;
+            if (target < 1) target = 5;
+            if (target > 5) target = 1;
+            showMateri(target);
+        }
+
+        /* =========================================================
+           SOAL BAGIAN 1: BENAR ATAU SALAH
+           ========================================================= */
+        function renderTFQuestions() {
+            const container = document.getElementById('tfQuestionsContainer');
+            container.innerHTML = '';
+
+            tfQuestions.forEach((q) => {
+                const card = document.createElement('div');
+                card.className = "p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3";
+                card.innerHTML = `
+                    <p class="text-sm md:text-base font-semibold text-slate-800">${q.question}</p>
+                    <div class="flex items-center space-x-3">
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="tf_${q.id}" value="Benar" class="peer hidden">
+                            <div class="py-2.5 px-4 rounded-xl border-2 border-slate-300 text-center font-bold text-xs md:text-sm text-slate-600 peer-checked:border-emerald-500 peer-checked:bg-emerald-500 peer-checked:text-white transition shadow-sm">
+                                <i class="fa-solid fa-circle-check mr-1.5"></i> Benar
+                            </div>
+                        </label>
+                        <label class="flex-1 cursor-pointer">
+                            <input type="radio" name="tf_${q.id}" value="Salah" class="peer hidden">
+                            <div class="py-2.5 px-4 rounded-xl border-2 border-slate-300 text-center font-bold text-xs md:text-sm text-slate-600 peer-checked:border-red-500 peer-checked:bg-red-500 peer-checked:text-white transition shadow-sm">
+                                <i class="fa-solid fa-circle-xmark mr-1.5"></i> Salah
+                            </div>
+                        </label>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        /* =========================================================
+           SOAL BAGIAN 2: INTERACTIVE LINE-MATCHING CANVAS
+           ========================================================= */
+        function renderMatchingNodes() {
+            const leftContainer = document.getElementById('leftMatchingNodes');
+            const rightContainer = document.getElementById('rightMatchingNodes');
+
+            leftContainer.innerHTML = '';
+            rightContainer.innerHTML = '';
+
+            leftItems.forEach(item => {
+                const node = document.createElement('div');
+                node.className = "flex items-center justify-between p-3 bg-white rounded-xl border-2 border-slate-200 shadow-sm cursor-pointer hover:border-emerald-400 transition select-none";
+                node.id = `left_node_${item.id}`;
+                node.onclick = () => selectLeftNode(item.id);
+
+                node.innerHTML = `
+                    <span class="text-xs md:text-sm font-bold text-slate-700">${item.label}</span>
+                    <div id="dot_left_${item.id}" class="dot-node w-5 h-5 rounded-full bg-emerald-400 border-2 border-white shadow ml-2 flex-shrink-0"></div>
+                `;
+                leftContainer.appendChild(node);
+            });
+
+            rightItems.forEach(item => {
+                const node = document.createElement('div');
+                node.className = "flex items-center justify-between p-3 bg-white rounded-xl border-2 border-slate-200 shadow-sm cursor-pointer hover:border-emerald-400 transition select-none";
+                node.id = `right_node_${item.id}`;
+                node.onclick = () => selectRightNode(item.id);
+
+                node.innerHTML = `
+                    <div id="dot_right_${item.id}" class="dot-node w-5 h-5 rounded-full bg-sky-400 border-2 border-white shadow mr-2 flex-shrink-0"></div>
+                    <span class="text-xs md:text-sm font-medium text-slate-700 text-right">${item.label}</span>
+                `;
+                rightContainer.appendChild(node);
+            });
+        }
+
+        function selectLeftNode(leftId) {
+            activeLeftNode = leftId;
+            highlightLeftNodes();
+        }
+
+        function selectRightNode(rightId) {
+            if (activeLeftNode !== null) {
+                userConnections[activeLeftNode] = rightId;
+                activeLeftNode = null;
+                highlightLeftNodes();
+                drawConnections();
+            }
+        }
+
+        function highlightLeftNodes() {
+            leftItems.forEach(item => {
+                const card = document.getElementById(`left_node_${item.id}`);
+                const dot = document.getElementById(`dot_left_${item.id}`);
+                if (item.id === activeLeftNode) {
+                    card.classList.add('border-amber-400', 'bg-amber-50');
+                    dot.classList.add('active', 'bg-amber-500');
+                } else {
+                    card.classList.remove('border-amber-400', 'bg-amber-50');
+                    dot.classList.remove('active', 'bg-amber-500');
+                }
+            });
+        }
+
+        function resetMatchingCanvas() {
+            userConnections = {};
+            activeLeftNode = null;
+            highlightLeftNodes();
+            drawConnections();
+        }
+
+        function setupCanvasResizeListener() {
+            window.addEventListener('resize', () => {
+                drawConnections();
+            });
+        }
+
+        function drawConnections() {
+            const svg = document.getElementById('svgCanvas');
+            const box = document.getElementById('matchingBox');
+            if (!svg || !box) return;
+
+            const boxRect = box.getBoundingClientRect();
+            svg.innerHTML = '';
+
+            Object.keys(userConnections).forEach(leftId => {
+                const rightId = userConnections[leftId];
+
+                const dotLeft = document.getElementById(`dot_left_${leftId}`);
+                const dotRight = document.getElementById(`dot_right_${rightId}`);
+
+                if (dotLeft && dotRight) {
+                    const rectLeft = dotLeft.getBoundingClientRect();
+                    const rectRight = dotRight.getBoundingClientRect();
+
+                    const x1 = (rectLeft.left + rectLeft.width / 2) - boxRect.left;
+                    const y1 = (rectLeft.top + rectLeft.height / 2) - boxRect.top;
+
+                    const x2 = (rectRight.left + rectRight.width / 2) - boxRect.left;
+                    const y2 = (rectRight.top + rectRight.height / 2) - boxRect.top;
+
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('x1', x1);
+                    line.setAttribute('y1', y1);
+                    line.setAttribute('x2', x2);
+                    line.setAttribute('y2', y2);
+                    line.setAttribute('stroke', '#10B981');
+                    line.setAttribute('stroke-width', '4');
+                    line.setAttribute('stroke-linecap', 'round');
+
+                    svg.appendChild(line);
+                }
+            });
+        }
+
+        /* =========================================================
+           SOAL BAGIAN 3: ESSAY & COUNTER LOGIC
+           ========================================================= */
+        function updateEssayCounter() {
+            const text = document.getElementById('essayInput').value;
+            const charCount = text.length;
+
+            // Sentence counter (split by . ! or ?)
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            const sentenceCount = sentences.length;
+
+            document.getElementById('charCounter').innerText = `${charCount} Karakter`;
+            document.getElementById('sentenceCounter').innerText = `Jumlah Kalimat: ${sentenceCount} kalimat`;
+        }
+
+        /* =========================================================
+           AUTO EVALUATION & SCORE CALCULATION ALGORITHM
+           ========================================================= */
+        function calculateAndShowResult() {
+            // 1. Calculate Part 1 (True/False - 5 x 5 = 25 pts)
+            let tfScore = 0;
+            tfQuestions.forEach(q => {
+                const selected = document.querySelector(`input[name="tf_${q.id}"]:checked`);
+                if (selected && selected.value === q.answer) {
+                    tfScore += 5;
+                }
+            });
+
+            // 2. Calculate Part 2 (Matching - 5 x 5 = 25 pts)
+            let matchScore = 0;
+            leftItems.forEach(item => {
+                const userMatch = userConnections[item.id];
+                // Find matching key item in rightItems
+                const rightObj = rightItems.find(r => r.id === userMatch);
+                if (rightObj && rightObj.keyFor === item.id) {
+                    matchScore += 5;
+                }
+            });
+
+            const totalPGAndMatchScore = tfScore + matchScore; // Max 50 pts scaled or combined
+
+            // Adjusted Weight according to prompt:
+            // "Nilai Bagian I & II (Maks 40 Poin) + Nilai Uraian Ringkasan (Maks 60 Poin) = Total Maksimal 100 Poin."
+            // So Bagian I & II combined = (tfScore + matchScore) / 50 * 40 = Max 40
+            const finalPart1And2Score = Math.round((totalPGAndMatchScore / 50) * 40);
+
+            // 3. Calculate Part 3 (Essay - Max 60 Pts)
+            const essayText = document.getElementById('essayInput').value.trim();
+            const essayScore = evaluateEssayRubric(essayText);
+
+            const totalFinalScore = finalPart1And2Score + essayScore;
+
+            // Render Results
+            document.getElementById('resStudentName').innerText = studentName;
+            document.getElementById('pgScoreText').innerText = `${finalPart1And2Score} / 40`;
+            document.getElementById('essayScoreText').innerText = `${essayScore} / 60`;
+            document.getElementById('finalScore').innerText = totalFinalScore;
+
+            // Switch Screen
+            document.getElementById('appContent').classList.add('hidden');
+            document.getElementById('resultScreen').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function evaluateEssayRubric(text) {
+            if (!text || text.length < 10) return 0;
+
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            const sentenceCount = sentences.length;
+
+            if (sentenceCount === 0) return 0;
+
+            // --- Rubrik 1: Kualitas Kalimat (Maksimal 40 Poin) ---
+            // Scaled fairly based on written sentence count
+            let rawSentenceQualitySum = 0;
+            sentences.forEach(s => {
+                const words = s.trim().split(/\s+/).length;
+                if (words >= 4) {
+                    rawSentenceQualitySum += 4; // Max score per sentence quality
+                } else if (words >= 2) {
+                    rawSentenceQualitySum += 2;
+                } else {
+                    rawSentenceQualitySum += 1;
+                }
+            });
+
+            // Formula: (Total Skor Kalimat / (Jumlah Kalimat x 4)) * 40
+            let sentenceQualityScore = (rawSentenceQualitySum / (sentenceCount * 4)) * 40;
+            if (sentenceQualityScore > 40) sentenceQualityScore = 40;
+
+            // --- Rubrik 2: Kelengkapan Informasi (10 Poin) ---
+            // Check essential keywords ('bulu tangkis', 'atlet', 'disiplin', 'pesan', 'nitya', 'latihan')
+            const lowerText = text.toLowerCase();
+            const keywords = ['bulu tangkis', 'atlet', 'disiplin', 'pesan', 'nitya', 'latihan', 'tanggung jawab'];
+            let foundKeywords = 0;
+            keywords.forEach(kw => {
+                if (lowerText.includes(kw)) foundKeywords++;
+            });
+
+            let infoCompletenessScore = 0;
+            if (foundKeywords >= 4) {
+                infoCompletenessScore = 10;
+            } else if (foundKeywords >= 2) {
+                infoCompletenessScore = 6;
+            } else if (foundKeywords >= 1) {
+                infoCompletenessScore = 3;
+            }
+
+            // --- Rubrik 3: Keruntutan (5 Poin) ---
+            // Ideal sentences count 3-5
+            let coherenceScore = 3;
+            if (sentenceCount >= 3 && sentenceCount <= 5) {
+                coherenceScore = 5;
+            } else if (sentenceCount > 5) {
+                coherenceScore = 4;
+            }
+
+            // --- Rubrik 4: Ejaan & Tanda Baca (5 Poin) ---
+            // Checks capitalized start and ends with punctuation
+            let punctuationScore = 0;
+            const startsWithCapital = /^[A-Z]/.test(text);
+            const endsWithPunctuation = /[.!?]$/.test(text.trim());
+
+            if (startsWithCapital) punctuationScore += 2.5;
+            if (endsWithPunctuation) punctuationScore += 2.5;
+
+            const totalEssay = Math.round(sentenceQualityScore + infoCompletenessScore + coherenceScore + punctuationScore);
+            return Math.min(60, Math.max(0, totalEssay));
+        }
+
+        /* =========================================================
+           MODAL DISCUSSION & RESET
+           ========================================================= */
+        function openDiscussionModal() {
+            document.getElementById('discussionModal').classList.remove('hidden');
+        }
+
+        function closeDiscussionModal() {
+            document.getElementById('discussionModal').classList.add('hidden');
+        }
+
+        function resetEntireApp() {
+            // Clear inputs
+            userConnections = {};
+            activeLeftNode = null;
+            document.getElementById('essayInput').value = '';
+            updateEssayCounter();
+
+            // Uncheck radio buttons
+            tfQuestions.forEach(q => {
+                const checked = document.querySelector(`input[name="tf_${q.id}"]:checked`);
+                if (checked) checked.checked = false;
+            });
+
+            // Return to Materi/Tugas SPA Screen
+            document.getElementById('resultScreen').classList.add('hidden');
+            document.getElementById('appContent').classList.remove('hidden');
+            switchMainTab('materi');
+            showMateri(1);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
